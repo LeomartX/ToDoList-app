@@ -20,7 +20,7 @@ Instala las dependencias:
 bash
 Copy
 npm install
-Si necesitas configurar un servidor backend, asegúrate de tener la API corriendo en http://10.0.0.193:84/api/tasks o la URL correspondiente.
+Si necesitas configurar un servidor backend, asegúrate de tener la API corriendo en http://tuIP:84/api/tasks o la URL correspondiente.
 
 Ejecuta la aplicación en un emulador o dispositivo físico:
 
