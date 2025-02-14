@@ -1,65 +1,68 @@
-# Starter Template with React Navigation
+Proyecto de Gestión de Tareas
+Este proyecto es una aplicación móvil desarrollada con React Native para gestionar tareas pendientes y completadas. Los usuarios pueden agregar, editar, eliminar y marcar tareas como completadas. La aplicación se conecta a un backend API para almacenar y obtener las tareas.
 
-This is a minimal starter template for React Native apps using Expo and React Navigation.
+Requisitos
+Antes de comenzar, asegúrate de tener instalados los siguientes programas:
 
-It includes the following:
+Node.js (preferentemente la versión LTS).
+Expo CLI.
+React Native.
+Un emulador de Android/iOS o un dispositivo físico para probar la aplicación.
+Instalación
+Clona el repositorio:
 
-- Example [Native Stack](https://reactnavigation.org/docs/native-stack-navigator) with a nested [Bottom Tab](https://reactnavigation.org/docs/bottom-tab-navigator)
-- Web support with [React Native for Web](https://necolas.github.io/react-native-web/)
-- TypeScript support and configured for React Navigation
-- Automatic deep link and URL handling configuration
-- Expo [Development Build](https://docs.expo.dev/develop/development-builds/introduction/) with [Continuous Native Generation](https://docs.expo.dev/workflow/continuous-native-generation/)
-- Edge-to-edge configured on Android with [`react-native-edge-to-edge`](https://www.npmjs.com/package/react-native-edge-to-edge)
+bash
+Copy
+git clone https://github.com/tu-usuario/nombre-del-repositorio.git
+cd nombre-del-repositorio
+Instala las dependencias:
 
-## Getting Started
+bash
+Copy
+npm install
+Si necesitas configurar un servidor backend, asegúrate de tener la API corriendo en http://10.0.0.193:84/api/tasks o la URL correspondiente.
 
-1. Create a new project using this template:
+Ejecuta la aplicación en un emulador o dispositivo físico:
 
-   ```sh
-   npx create-expo-app@latest --template react-navigation/template
-   ```
+bash
+Copy
+npx expo start
+Estructura del Proyecto
+El proyecto está compuesto por los siguientes componentes principales:
 
-2. Edit the `app.json` file to configure the `name`, `slug`, `scheme` and bundle identifiers (`ios.bundleIdentifier` and `android.bundleIdentifier`) for your app.
+TaskForm: Componente para crear y editar tareas.
+TaskItem: Componente que representa una tarea individual con opciones para editar, eliminar y cambiar su estado.
+TaskList: Componente que muestra una lista de tareas.
+TaskContext: Contexto que maneja el estado global de las tareas y las interacciones con la API.
+PendingTasks: Vista de las tareas pendientes.
+CompletedTasks: Vista de las tareas completadas.
+Navigation: Configuración de la navegación entre las vistas de tareas pendientes y completadas.
+Funcionalidades
+Tareas Pendientes
+En la sección de "Tareas Pendientes" puedes:
 
-3. Edit the `src/App.tsx` file to start working on your app.
+Agregar nuevas tareas: Usa el formulario para crear tareas.
+Editar tareas: Puedes actualizar el título y la descripción de una tarea.
+Eliminar tareas: Elimina tareas de la lista.
+Marcar tareas como completadas: Cambia el estado de la tarea a "Completada".
+Tareas Completadas
+En la sección de "Tareas Completadas" puedes:
 
-## Running the app
+Ver las tareas que ya han sido completadas.
+No se pueden editar ni eliminar las tareas completadas en esta sección, solo visualizar.
+Componentes
+TaskForm: Este formulario permite a los usuarios crear y editar tareas. Tiene validaciones para asegurarse de que tanto el título como la descripción sean completados.
 
-- Install the dependencies:
+TaskItem: Cada tarea se muestra con su título y descripción. Además, tiene botones para editar, eliminar y marcar la tarea como completada o pendiente.
 
-  ```sh
-  npm install
-  ```
+TaskList: Este componente muestra una lista de tareas. Puede manejar la edición, eliminación y cambio de estado de las tareas.
 
-- Start the development server:
+TaskContext: Es el contexto que maneja el estado global de las tareas. Usa un reducer para manejar las acciones como agregar, editar, eliminar y cambiar el estado de las tareas.
 
-  ```sh
-  npm start
-  ```
+API
+La aplicación se conecta a una API REST que permite realizar operaciones CRUD sobre las tareas. Los endpoints principales son:
 
-- Build and run iOS and Android development builds:
-
-  ```sh
-  npm run ios
-  # or
-  npm run android
-  ```
-
-- In the terminal running the development server, press `i` to open the iOS simulator, `a` to open the Android device or emulator, or `w` to open the web browser.
-
-## Notes
-
-This project uses a [development build](https://docs.expo.dev/develop/development-builds/introduction/) and cannot be run with [Expo Go](https://expo.dev/go). To run the app with Expo Go, edit the `package.json` file, remove the `expo-dev-client` package and `--dev-client` flag from the `start` script. However, Edge-to-edge won't work on Expo Go.
-
-We highly recommend using the development builds for normal development and testing.
-
-The `ios` and `android` folder are gitignored in the project by default as they are automatically generated during the build process ([Continuous Native Generation](https://docs.expo.dev/workflow/continuous-native-generation/)). This means that you should not edit these folders directly and use [config plugins](https://docs.expo.dev/config-plugins/) instead. However, if you need to edit these folders, you can remove them from the `.gitignore` file so that they are tracked by git.
-
-## Resources
-
-- [React Navigation documentation](https://reactnavigation.org/)
-- [Expo documentation](https://docs.expo.dev/)
-
----
-
-Demo assets are from [lucide.dev](https://lucide.dev/)
+GET /api/tasks: Obtener todas las tareas.
+POST /api/tasks: Crear una nueva tarea.
+PUT /api/tasks/:id: Actualizar una tarea existente.
+DELETE /api/tasks/:id: Eliminar una tarea.
